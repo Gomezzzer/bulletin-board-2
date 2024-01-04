@@ -14,7 +14,8 @@
       Add a new board
     </h2>
 
-    <form action="/insert_board" method="post">
+    <% if current_user != nil %>
+      <form action="/insert_board" method="post">
       <div>
         <label for="name_box">
           Name
@@ -26,8 +27,12 @@
       <button>
         Add board
       </button>
-    </form>
-  </div>
+     </form>
+    <% else %> 
+     <p>You must <a href="/users/sign_in">sign in</a> to add a board.</p> 
+    <% end %>
+ 
+  </div> 
 </div>
 
 <hr>
@@ -44,7 +49,7 @@
 
        <% the_user = matching_users.at(0) %>
 
-       <%= the_user.eamil %> 
+       <%= the_user.email %> 
       </div>
 
       <hr> 
